@@ -1,4 +1,5 @@
 <?php
+        header('Content-Type: text/html; charset=utf-8');
 
         $us_responses = array(
                 "generic" => "BEEP BOOP I AM A ROBOT",
