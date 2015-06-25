@@ -1,0 +1,6 @@
+requirements:
+
+python (32 bit for osx)
+
+Skype4Py (pip install)
+requests (pip install)
