@@ -15,7 +15,7 @@ class Robot(object):
 			self.skype.Attach()
 
 	def LogMessage(self, sender, message):
-		print sender, message
+		print sender, "::", message
 
 	def MessageStatus(self, msg, status):
 		#print msg.Sender.CountryCode
@@ -25,8 +25,8 @@ class Robot(object):
 				url = 'http://spiralpower.net/files/SkypeBot/server/'
 				payload = {'message': msg.Body, 'sender_handle': msg.FromHandle, 'sender_fullname': msg.FromDisplayName, 'sender_country': msg.Sender.CountryCode}
 				r = requests.post(url, data=payload)
-				msg.Chat.SendMessage(r.text)
-				self.LogMessage("ROBOT", r.text)
+				msg.Chat.SendMessage(unicode(r.text))
+				self.LogMessage("ROBOT", unicode(r.text))
 
 if __name__ == "__main__":
 	bot = Robot()
