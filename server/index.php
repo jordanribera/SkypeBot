@@ -36,7 +36,7 @@
                 "Japanese" => $Japanese_responses,
                 "Spanish" => $Spanish_responses,
                 "German" => $German_responses,
-                "French" => $German_responses
+                "French" => $French_responses
                 );
 
 
