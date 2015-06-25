@@ -1,21 +1,42 @@
 <?php
         header('Content-Type: text/html; charset=utf-8');
 
-        $us_responses = array(
+        $English_responses = array(
                 "generic" => "BEEP BOOP I AM A ROBOT",
                 "greeting" => "GREETINGS HUMAN",
-                "farewell" => "UNTIL NEXT TIME"
+                "farewell" => "FAREWELL"
                 );
 
-        $jp_responses = array(
+        $Japanese_responses = array(
                 "generic" => "私はロボットです",
                 "greeting" => "こんにちは、人間",
                 "farewell" => "さようなら"
                 );
 
+        $Spanish_responses = array(
+                "generic" => "Soy un robot",
+                "greeting" => "Hola, humano",
+                "farewell" => "Adiós"
+                );
+
+        $German_responses = array(
+                "generic" => "Ich bin ein Roboter",
+                "greeting" => "Hallo, menschliche",
+                "farewell" => "Auf Wiedersehen"
+                );
+
+        $French_responses = array(
+                "generic" => "Je suis un robot",
+                "greeting" => "Bonjour, humaine",
+                "farewell" => "Au revoir"
+                );
+
         $all_responses = array(
-                "us" => $us_responses,
-                "jp" => $jp_responses
+                "English" => $English_responses,
+                "Japanese" => $Japanese_responses,
+                "Spanish" => $Spanish_responses,
+                "German" => $German_responses,
+                "French" => $German_responses
                 );
 
 
@@ -25,25 +46,26 @@
 
                 $message = $_POST['message'];
                 $country = $_POST['sender_country'];
+                $language = $_POST['sender_language'];
 
                 if (strtolower($message) == 'hello')
                 {
 
-                        $response = $all_responses[$country]["greeting"];
+                        $response = $all_responses[$language]["greeting"];
 
                         if(isset($_POST['sender_fullname'])) $response = $response . ' ' . strtoupper($_POST['sender_fullname']);
 
                 }
                 else if (strtolower($message) == 'goodbye')
                 {
-                        $response = $all_responses[$country]["farewell"];
+                        $response = $all_responses[$language]["farewell"];
 
                         if(isset($_POST['sender_fullname'])) $response = $response . ' ' . strtoupper($_POST['sender_fullname']);
                 }
                 else
                 {
 
-                        $response = $all_responses[$country]["generic"];
+                        $response = $all_responses[$language]["generic"];
 
                 }
 
