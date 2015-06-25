@@ -18,12 +18,12 @@ class Robot(object):
 		print sender, "::", message
 
 	def MessageStatus(self, msg, status):
-		#print msg.Sender.CountryCode
+		print msg.Sender.Language
 		if status == Skype4Py.cmsReceived:
 			if msg.Chat.Type in (Skype4Py.chatTypeDialog, Skype4Py.chatTypeLegacyDialog):
 				self.LogMessage(msg.FromHandle, msg.Body)
 				url = 'http://spiralpower.net/files/SkypeBot/server/'
-				payload = {'message': msg.Body, 'sender_handle': msg.FromHandle, 'sender_fullname': msg.FromDisplayName, 'sender_country': msg.Sender.CountryCode}
+				payload = {'message': msg.Body, 'sender_handle': msg.FromHandle, 'sender_fullname': msg.FromDisplayName, 'sender_country': msg.Sender.CountryCode, 'sender_language': msg.Sender.Language}
 				r = requests.post(url, data=payload)
 				msg.Chat.SendMessage(unicode(r.text))
 				self.LogMessage("ROBOT", unicode(r.text))
